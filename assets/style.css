@@ -389,7 +389,7 @@
 }
 
 .anim__loading::before {
-    border-top: 0.3em solid var(--color-grey0);
+    border-top: 0.3em solid var(--color-white);
     transform: rotate(120deg);
 }
 
