@@ -1,0 +1,462 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
+
+:root {
+    --color-primary: #191d2b;
+    --color-secondary: #ed6c40;
+    --color-white: #FFFFFF;
+    --color-grey-3: #6c7983;
+	--fg: #2e3138;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+  }
+
+  body{
+    margin-top: 10%;
+    background-color: var(--color-primary);
+
+  }
+ 
+
+.anim__container{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    
+}
+
+.anim__container > div{
+    border: 1px solid var(--color-grey-3);
+    border-radius: 5px;
+    color: var(--color-white);
+    width: 500px;
+    height: 200px;
+    margin-left: 15px;
+    vertical-align: middle;   
+    display: flex;
+}
+
+@media only screen and (max-width : 600px) {
+    .anim__container > div{
+        position: relative;
+        width: 100%;
+        background-color: rgb(87, 56, 19);
+    }
+}
+
+.anim__child{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/***************Animation 1*************/
+.anim__load__1 > span{
+    background-color: var(--color-secondary);
+    width: 100px;
+    height: 100px;
+    border: 7px solid var(--color-white);
+    transform: rotate(45deg);
+    border-radius: 0 50% 50% 50%;
+    position: relative;
+    animation: move 0.5s linear infinite alternate-reverse;
+}
+
+.anim__load__1 > span::before{
+  content: "";
+  position: absolute;
+  height: 55%;
+  width: 55%;
+  border-radius: 50%;
+  border: 7px solid transparent;
+  border-top-color: white;
+  border-bottom-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes move {
+    to {
+        transform: translateY(15px) rotate(45deg);
+      }
+}
+
+@keyframes rotate {
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  /***************Animation 2*************/
+  .anim__loading-container {
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+    color: var(--color-secondary);
+    position: relative;
+    margin: 0 32px;
+  }
+  
+  .anim__loading-container:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-secondary);
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+    animation: movingLine 2.4s infinite ease-in-out;
+  }
+  
+  @keyframes movingLine {
+    0% {
+      opacity: 0;
+      width: 0;
+    }
+  
+    33.3%, 66% {
+      opacity: 0.8;
+      width: 100%;
+    }
+  
+    85% {
+      width: 0;
+      left: initial;
+      right: 0;
+      opacity: 1;
+    }
+  
+    100% {
+      opacity: 0;
+      width: 0;
+    }
+  }
+  
+  .anim__loading-text {
+    font-size: 5vw;
+    line-height: 64px;
+    letter-spacing: 10px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .anim__loading-text span {
+    animation: moveLetters 2.4s infinite ease-in-out;
+    transform: translateX(0);
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    text-shadow: 0px 2px 10px rgba(46, 74, 81, 0.3);
+  }
+  
+  .anim__loading-text span:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+  
+  .anim__loading-text span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .anim__loading-text span:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+  
+  .anim__loading-text span:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+  
+  .anim__loading-text span:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+  
+  .anim__loading-text span:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+  
+  .anim__loading-text span:nth-child(7) {
+    animation-delay: 0.7s;
+  }
+  
+  @keyframes moveLetters {
+    0% {
+      transform: translateX(-15vw);
+      opacity: 0;
+    }
+  
+    33.3%, 66% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  
+    100% {
+      transform: translateX(15vw);
+      opacity: 0;
+    }
+  }
+
+/***************Animation 3*************/
+
+  .anim__hourglass, .anim__hourglass:before, .anim__hourglass:after {
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+}
+.anim__hourglass {
+	--polygonH: polygon(0% 0%,100% 0%,100% 5.55%,95% 5.55%,95% 28%,60% 46%,60% 54%,95% 72%,95% 94.45%,100% 94.45%,100% 100%,0% 100%,0% 94.45%,5% 94.45%,5% 72%,40% 54%,40% 46%,5% 28%,5% 5.55%,0% 5.55%);
+	animation-name: flip;
+	animation-timing-function: ease-in-out;
+	background-image: linear-gradient(var(--color-secondary) 0.5em,#e1e3ea55 0.5em 8.5em, var(--color-secondary) 8.5em);
+	clip-path: var(--polygonH);
+	-webkit-clip-path: var(--polygonH);
+	overflow: hidden;
+	position: relative;
+	width: 5em;
+	height: 9em;
+	z-index: 0;
+}
+.anim__hourglass:before, .anim__hourglass:after {
+	animation-timing-function: linear;
+	content: "";
+	display: block;
+	position: absolute;
+}
+.anim__hourglass:before {
+	--polygonB1: polygon(0% 0%,100% 0%,100% 24%,50% 47%,50% 47%,50% 47%,50% 47%,50% 47%,50% 47%,50% 47%,50% 47%,0% 24%);
+	--polygonB2: polygon(0% 4%,100% 4%,100% 24%,55% 45%,55% 100%,55% 100%,55% 100%,45% 100%,45% 100%,45% 100%,45% 45%,0% 24%);
+	--polygonB3: polygon(0% 24%,100% 24%,100% 24%,55% 45%,55% 80%,100% 100%,100% 100%,0% 100%,0% 100%,45% 80%,45% 45%,0% 24%);
+	--polygonB4: polygon(45% 45%,55% 45%,55% 45%,55% 45%,55% 58%,100% 76%,100% 100%,0% 100%,0% 76%,45% 58%,45% 45%,45% 45%);
+	--polygonB5: polygon(50% 53%,50% 53%,50% 53%,50% 53%,50% 53%,100% 76%,100% 100%,0% 100%,0% 76%,50% 53%,50% 53%,50% 53%);
+	animation-name: fill;
+	background-color: var(--fg);
+	background-size: 100% 3.6em;
+	clip-path: var(--polygonB1);
+	-webkit-clip-path: var(--polygonB1);
+	top: 0.5em;
+	left: 0.5em;
+	width: 4em;
+	height: 8em;
+	z-index: 1;
+}
+.anim__hourglass:after {
+	animation-name: glare;
+	background:
+		linear-gradient(90deg,#0000 0.5em,#0003 0.5em 1.5em,#0000 1.5em 3.5em,#fff3 3.5em 4.5em,#fff0 4.5em 6.5em,#0003 6.5em 7.5em,#0000 7.5em) 0 0 / 100% 0.5em,
+		linear-gradient(90deg,#0000 0.75em,#0003 0.75em 1.25em,#0000 1.25em 3.75em,#fff3 3.75em 4.25em,#fff0 4.25em 6.75em,#0003 6.75em 7.25em,#0000 7.25em) 0 0.5em / 100% 8em,
+		linear-gradient(90deg,#0000 0.5em,#0003 0.5em 1.5em,#0000 1.5em 3.5em,#fff3 3.5em 4.5em,#fff0 4.5em 6.5em,#0003 6.5em 7.5em,#0000 7.5em) 0 100% / 100% 0.5em;
+	background-repeat: repeat-x;
+	top: 0;
+	left: -3em;
+	width: 200%;
+	height: 100%;
+	z-index: 2;
+}
+
+@keyframes fill {
+	from {
+		clip-path: var(--polygonB1);
+		-webkit-clip-path: var(--polygonB1);
+	}
+	10% {
+		clip-path: var(--polygonB2);
+		-webkit-clip-path: var(--polygonB2);
+	}
+	45% {
+		clip-path: var(--polygonB3);
+		-webkit-clip-path: var(--polygonB3);
+	}
+	80% {
+		clip-path: var(--polygonB4);
+		-webkit-clip-path: var(--polygonB4);
+	}
+	85%, to {
+		clip-path: var(--polygonB5);
+		-webkit-clip-path: var(--polygonB5);
+	}
+}
+@keyframes glare {
+	from, 90% {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(3em);
+	}
+}
+@keyframes flip {
+	from, 90% {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(180deg);
+	}
+}
+
+/************Animation 4*************/
+.anim__loader {
+    width: 16em;
+    height: 8em;
+    position: relative;
+    overflow: hidden;
+}
+
+.anim__loader::before,
+.anim__loader::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+}
+
+.anim__loader::before {
+    width: inherit;
+    height: 0.2em;
+    background-color: var(--color-secondary);
+}
+
+.anim__loader::after {
+    box-sizing: border-box;
+    width: 50%;
+    height: inherit;
+    border: 0.35em solid var(--color-secondary);
+    border-radius: 50%;
+    left: 25%;
+}
+
+.anim__loader span {
+    position: absolute;
+    width: 5%;
+    height: 10%;
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+    bottom: 0.2em;
+    left: -5%;
+    animation: 2s linear infinite;
+    transform-origin: 50% -3em;
+    animation-name: run, rotating;
+}
+
+.anim__loader span:nth-child(2) {animation-delay: 0.075s;}
+.anim__loader span:nth-child(3) {animation-delay: 0.15s;}
+
+@keyframes run {
+    0% {left: -5%;}
+    10%, 60% {left: calc((100% - 5%) / 2);}
+    70%, 100% {left: 100%;}
+}
+
+@keyframes rotating {
+    0%, 10% {transform: rotate(0deg);}
+    60%, 100% {transform: rotate(-1turn);}
+}
+
+
+/***************Animation 5*************/
+
+.anim__loading {
+    width: 6em;
+    height: 6em;
+    font-size: 25px;
+    box-sizing: border-box;
+    border-top: 0.3em solid red;
+    border-radius: 50%;
+    position: relative;
+    animation: rotating 2s ease-in-out infinite;
+    --direction: 1;
+}
+
+.anim__loading::before,
+.anim__loading::after {
+    content: '';
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    box-sizing: border-box;
+    top: -0.2em;
+}
+
+.anim__loading::before {
+    border-top: 0.3em solid var(--color-grey0);
+    transform: rotate(120deg);
+}
+
+.anim__loading::after {
+    border-top: 0.3em solid green;
+    transform: rotate(240deg);
+}
+
+.anim__loading span {
+    position: absolute;
+    color: var(--color-secondary);
+    width: inherit;
+    height: inherit;
+    text-align: center;
+    line-height: 6em;
+    font-family: sans-serif;
+    animation: rotating 2s linear infinite;
+    --direction: -1;
+}
+
+@keyframes rotating {
+    50% {
+        transform: rotate(calc(180deg * var(--direction)));
+    }
+
+    100% {
+        transform: rotate(calc(360deg * var(--direction)));
+    }
+}
+
+
+/***************Animation 6*************/
+
+.anim__twin__circle{
+	width:200px;
+	height:200px;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%,-50%);
+}
+.anim__circle1,.anim__circle2{
+	width:70px;
+	height:70px;
+	position:absolute;
+	background: var(--color-white);
+	border-radius:50%;
+	top:50%;left:50%;
+	transform:translate(-50%,-50%);
+}
+.anim__circle1{
+	left:20%;
+	animation:osc-l 2.5s ease infinite;
+}
+.anim__circle2{
+	left:80%;
+	animation:osc-r 2.5s ease infinite;
+	background:var(--color-secondary);
+}
+@keyframes osc-l{
+	0%{left:20%;}
+	50%{left:50%;}
+	100%{left:20%;}
+}
+@keyframes osc-r{
+	0%{left:80%;}
+	50%{left:50%;}
+	100%{left:80%;}
+}
